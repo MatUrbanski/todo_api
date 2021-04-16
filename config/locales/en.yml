@@ -1,0 +1,6 @@
+en:
+  invalid_params: Your query contains incorrectly formed parameters.
+  something_went_wrong: Something went wrong.
+  invalid_email_or_password: Invalid email or password.
+  invalid_authorization_token: Invalid authorization token.
+  not_found: Record not found.
