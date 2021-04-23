@@ -11,6 +11,20 @@ module ApiHelpers
   def json_response
     JSON.parse(response.body)
   end
+
+  # It generates access token for {User}.
+  #
+  # @see AccessTokenGenerator
+  def access_token(user)
+    AccessTokenGenerator.new(user: user).call
+  end
+
+  # It generates refresh token for {User}.
+  #
+  # @see RefreshTokenGenerator
+  def refresh_token(user)
+    RefreshTokenGenerator.new(user: user).call
+  end
 end
 
 RSpec.configure do |config|
