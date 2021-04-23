@@ -23,6 +23,8 @@ class User < Sequel::Model
   # Plugin that adds BCrypt authentication and password hashing to Sequel models.
   plugin :secure_password
 
+  one_to_many :todos
+
   # It validates {User} object.
   #
   # @example Validate {User}:
