@@ -28,6 +28,9 @@ class App < Roda
     elsif e.instance_of?(Sequel::ValidationFailed)
       error_object    = e.model.errors
       response.status = 422
+    elsif e.instance_of?(Exceptions::InvalidEmailOrPassword)
+      error_object    = { error: I18n.t('invalid_email_or_password') }
+      response.status = 401
     else
       error_object    = { error: I18n.t('something_went_wrong') }
       response.status = 500
@@ -58,6 +61,14 @@ class App < Roda
           sign_up_params = SignUpParams.new.permit!(r.params)
           user           = Users::Creator.new(attributes: sign_up_params).call
           tokens         = AuthorizationTokensGenerator.new(user: user).call
+
+          UserSerializer.new(user: user, tokens: tokens).render
+        end
+
+        r.post('login') do
+          login_params = LoginParams.new.permit!(r.params)
+          user         = Users::Authenticator.new(email: login_params[:email], password: login_params[:password]).call
+          tokens       = AuthorizationTokensGenerator.new(user: user).call
 
           UserSerializer.new(user: user, tokens: tokens).render
         end
