@@ -31,6 +31,9 @@ class App < Roda
     elsif e.instance_of?(Exceptions::InvalidEmailOrPassword)
       error_object    = { error: I18n.t('invalid_email_or_password') }
       response.status = 401
+    elsif e.instance_of?(ActiveSupport::MessageVerifier::InvalidSignature)
+      error_object    = { error: I18n.t('invalid_authorization_token') }
+      response.status = 401
     else
       error_object    = { error: I18n.t('something_went_wrong') }
       response.status = 500
@@ -54,6 +57,20 @@ class App < Roda
   # This is mostly designed for use with JSON API sites.
   plugin :json_parser
 
+  # It validates authorization token that was passed in Authorization header.
+  #
+  # @see AuthorizationTokenValidator
+  def current_user
+    return @current_user if @current_user
+
+    purpose = request.url.include?('refresh_token') ? :refresh_token : :access_token
+
+    @current_user = AuthorizationTokenValidator.new(
+      authorization_token: env['HTTP_AUTHORIZATION'],
+      purpose: purpose
+    ).call
+  end
+
   route do |r|
     r.on('api') do
       r.on('v1') do
@@ -71,6 +88,12 @@ class App < Roda
           tokens       = AuthorizationTokensGenerator.new(user: user).call
 
           UserSerializer.new(user: user, tokens: tokens).render
+        end
+
+        r.delete('logout') do
+          Users::UpdateAuthenticationToken.new(user: current_user).call
+
+          response.write(nil)
         end
       end
     end
