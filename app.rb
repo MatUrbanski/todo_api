@@ -57,7 +57,7 @@ class App < Roda
   # This is mostly designed for use with JSON API sites.
   plugin :json_parser
 
-  # It validates authorization token that was passed in Authorization header.
+  # It validates authorization token that was passed in Authorization header
   #
   # @see AuthorizationTokenValidator
   def current_user
@@ -94,6 +94,14 @@ class App < Roda
           Users::UpdateAuthenticationToken.new(user: current_user).call
 
           response.write(nil)
+        end
+
+        r.post('refresh_token') do
+          Users::UpdateAuthenticationToken.new(user: current_user).call
+
+          tokens = AuthorizationTokensGenerator.new(user: current_user).call
+
+          TokensSerializer.new(tokens: tokens).render
         end
       end
     end
