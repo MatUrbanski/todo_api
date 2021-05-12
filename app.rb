@@ -115,6 +115,13 @@ class App < Roda
 
             TodosSerializer.new(todos: todos).render
           end
+
+          r.post do
+            todo_params = TodoParams.new.permit!(r.params)
+            todo        = Todos::Creator.new(user: current_user, attributes: todo_params).call
+
+            TodoSerializer.new(todo: todo).render
+          end
         end
       end
     end
