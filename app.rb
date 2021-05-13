@@ -121,6 +121,14 @@ class App < Roda
             r.get do
               TodoSerializer.new(todo: todo).render
             end
+
+            r.put do
+              todo_params = TodoParams.new.permit!(r.params)
+
+              Todos::Updater.new(todo: todo, attributes: todo_params).call
+
+              TodoSerializer.new(todo: todo).render
+            end
           end
 
           r.get do
