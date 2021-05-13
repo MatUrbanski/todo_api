@@ -20,6 +20,9 @@ class App < Roda
   # The symbol_matchers plugin allows you do define custom regexps to use for specific symbols.
   plugin :symbol_matchers
 
+  # Validate UUID format.
+  symbol_matcher :uuid, Constants::UUID_REGEX
+
   # Adds ability to automatically handle errors raised by the application.
   plugin :error_handler do |e|
     if e.instance_of?(Exceptions::InvalidParamsError)
@@ -34,6 +37,9 @@ class App < Roda
     elsif e.instance_of?(ActiveSupport::MessageVerifier::InvalidSignature)
       error_object    = { error: I18n.t('invalid_authorization_token') }
       response.status = 401
+    elsif e.instance_of?(Sequel::NoMatchingRow)
+      error_object    = { error: I18n.t('not_found') }
+      response.status = 404
     else
       error_object    = { error: I18n.t('something_went_wrong') }
       response.status = 500
@@ -108,6 +114,14 @@ class App < Roda
           # We are calling the current_user method to get the current user
           # from the authorization token that was passed in the Authorization header.
           current_user
+
+          r.on(:uuid) do |id|
+            todo = current_user.todos_dataset.with_pk!(id)
+
+            r.get do
+              TodoSerializer.new(todo: todo).render
+            end
+          end
 
           r.get do
             todos_params = TodosParams.new.permit!(r.params)
