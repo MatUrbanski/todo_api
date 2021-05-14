@@ -52,6 +52,12 @@ gem 'timecop'
 # Ruby internationalization and localization (i18n) solution.
 gem 'i18n'
 
+# Rack middleware for blocking & throttling.
+gem 'rack-attack'
+
+# Redis is an in-memory database that persists on disk.
+gem 'redis'
+
 group :development, :test do
   # A library for setting up Ruby objects as test data.
   gem 'factory_bot'

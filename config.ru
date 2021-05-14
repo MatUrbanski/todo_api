@@ -4,4 +4,6 @@
 
 require_relative 'app'
 
+use Rack::Attack
+
 run App.freeze.app

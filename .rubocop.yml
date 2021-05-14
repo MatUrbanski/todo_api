@@ -75,3 +75,8 @@ Naming/VariableNumber:
 Metrics/ClassLength:
   Exclude:
     - 'app.rb'
+
+Style/IpAddresses:
+  Exclude:
+    - system/boot/rack_attack.rb
+    - spec/requests/api/v1/throttling_spec.rb

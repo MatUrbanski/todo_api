@@ -6,8 +6,9 @@ require 'rack/test'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods, type: :request
+  config.include Rack::Test::Methods, type: :throttling
 
   def app
-    App.freeze.app
+    Rack::Builder.parse_file('config.ru').first
   end
 end
