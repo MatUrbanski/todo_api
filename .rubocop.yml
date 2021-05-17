@@ -76,6 +76,15 @@ Metrics/ClassLength:
   Exclude:
     - 'app.rb'
 
+Layout/SingleLineBlockChain:
+  Enabled: false
+
+Layout/RedundantLineBreak:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
 Style/IpAddresses:
   Exclude:
     - system/boot/rack_attack.rb
