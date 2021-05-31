@@ -8,7 +8,7 @@ ruby '3.0.0'
 gem 'roda', '>= 3.41'
 
 # Use Puma as the app server.
-gem 'puma', '~> 5.2'
+gem 'puma', '~> 5.3'
 
 # A make-like build utility for Ruby.
 gem 'rake'
