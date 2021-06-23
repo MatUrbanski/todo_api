@@ -29,6 +29,7 @@ Style/StringHashKeys:
   Exclude:
     - app.rb
     - spec/**/*
+    - config.ru
 
 RSpec/NestedGroups:
   Max: 5
