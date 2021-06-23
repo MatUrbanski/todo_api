@@ -58,6 +58,9 @@ gem 'rack-attack'
 # Redis is an in-memory database that persists on disk.
 gem 'redis'
 
+# Simple, efficient background processing for Ruby.
+gem 'sidekiq'
+
 group :development, :test do
   # A library for setting up Ruby objects as test data.
   gem 'factory_bot'

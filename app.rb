@@ -110,6 +110,12 @@ class App < Roda
           TokensSerializer.new(tokens: tokens).render
         end
 
+        r.delete('delete_account') do
+          DeleteAccountWorker.perform_async(current_user.id)
+
+          response.write(nil)
+        end
+
         r.on('todos') do
           # We are calling the current_user method to get the current user
           # from the authorization token that was passed in the Authorization header.
