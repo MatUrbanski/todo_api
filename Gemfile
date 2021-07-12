@@ -38,7 +38,7 @@ gem 'dry-validation'
 gem 'roda-enhanced_logger'
 
 # Organize your code into reusable components.
-gem 'dry-system', '0.18.1'
+gem 'dry-system', '0.19.1'
 
 # A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
 gem 'activesupport'
