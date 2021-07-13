@@ -38,7 +38,7 @@ gem 'dry-validation'
 gem 'roda-enhanced_logger'
 
 # Organize your code into reusable components.
-gem 'dry-system', '0.18.1'
+gem 'dry-system'
 
 # A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
 gem 'activesupport'
@@ -60,6 +60,9 @@ gem 'redis'
 
 # Simple, efficient background processing for Ruby.
 gem 'sidekiq'
+
+# Efficient and thread-safe code loader for Ruby.
+gem 'zeitwerk'
 
 group :development, :test do
   # A library for setting up Ruby objects as test data.
