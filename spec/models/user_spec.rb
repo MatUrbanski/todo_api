@@ -91,7 +91,7 @@ describe User, type: :model do
       let(:password)              { 'password' }
       let(:password_confirmation) { 'password' }
 
-      it 'does not add error to the :email field' do
+      it 'does not add error to the :password field' do
         expect(user.errors[:password]).to eq nil
       end
     end
