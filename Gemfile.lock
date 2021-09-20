@@ -67,7 +67,7 @@ GEM
     ice_nine (0.11.2)
     method_source (1.0.0)
     minitest (5.14.4)
-    nio4r (2.5.7)
+    nio4r (2.5.8)
     oj (3.13.6)
     parallel (1.21.0)
     parser (3.0.2.0)
@@ -78,7 +78,7 @@ GEM
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    puma (5.4.0)
+    puma (5.5.0)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-attack (6.5.0)
@@ -167,7 +167,7 @@ DEPENDENCIES
   i18n
   oj
   pry
-  puma (~> 5.4)
+  puma (~> 5.5)
   rack-attack
   rack-test
   rake
