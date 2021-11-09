@@ -108,7 +108,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
-    rubocop (1.22.1)
+    rubocop (1.22.3)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -138,7 +138,7 @@ GEM
     sequel_secure_password (0.2.15)
       bcrypt (>= 3.1, < 4.0)
       sequel (>= 4.1.0, < 6.0)
-    sidekiq (6.2.2)
+    sidekiq (6.3.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -150,7 +150,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
     yard (0.9.26)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   x86_64-darwin-20
