@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.1.4.1)
+    activesupport (6.1.4.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -66,7 +66,7 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     method_source (1.0.0)
-    minitest (5.14.4)
+    minitest (5.15.0)
     nio4r (2.5.8)
     oj (3.13.9)
     parallel (1.21.0)
