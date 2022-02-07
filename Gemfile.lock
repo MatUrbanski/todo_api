@@ -86,7 +86,7 @@ GEM
       rack (>= 1.0, < 3)
     rainbow (3.1.1)
     rake (13.0.6)
-    redis (4.5.1)
+    redis (4.6.0)
     regexp_parser (2.2.0)
     rexml (3.2.5)
     roda (3.52.0)
@@ -151,7 +151,7 @@ GEM
     webrick (1.7.0)
     yard (0.9.27)
       webrick (~> 1.7.0)
-    zeitwerk (2.5.3)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   x86_64-darwin-20
