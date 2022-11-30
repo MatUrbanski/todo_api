@@ -141,7 +141,7 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
-    timecop (0.9.4)
+    timecop (0.9.6)
     tty-color (0.6.0)
     tty-logger (0.6.0)
       pastel (~> 0.8)
